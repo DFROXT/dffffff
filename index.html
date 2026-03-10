@@ -3,86 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANONYMOUS | ALPHA COMMAND</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>ᴀɴᴏɴʏᴍᴏᴜs · ɪᴠᴀsᴍs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #050505;
-            color: #00f5ff;
-            font-family: 'Rajdhani', sans-serif;
-            overflow: hidden;
+            background: #0b0b0f;
+            color: #aaffdd;
+            font-family: 'Orbitron', 'Segoe UI', monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
         }
-        .bg-glow {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #0015ff22 0%, transparent 70%);
+        /* glow background */
+        .glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #00ffff08 0%, transparent 70%);
+            animation: rotate 60s linear infinite;
             z-index: -1;
         }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
         .container {
-            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            max-width: 800px;
+            padding: 40px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
         }
-        .profile-box {
-            position: relative; padding: 10px; border-radius: 50%;
-            background: linear-gradient(45deg, #00f5ff, #0080ff);
-            box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
-            margin-bottom: 20px;
+        .header {
+            margin-bottom: 40px;
         }
-        .profile-img {
-            width: 150px; height: 150px; border-radius: 50%; border: 5px solid #050505;
-            background: #000; display: flex; align-items: center; justify-content: center;
-            font-family: 'Orbitron'; font-size: 50px;
+        .header h1 {
+            font-size: 4rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px cyan;
+            font-weight: 900;
+            line-height: 1.2;
+            word-break: break-word;
         }
-        h1 {
-            font-family: 'Orbitron'; font-size: 40px; letter-spacing: 15px;
-            text-shadow: 0 0 20px #00f5ff; margin-bottom: 10px;
+        .header p {
+            font-size: 1.2rem;
+            color: #77ddff;
+            letter-spacing: 5px;
+            margin-top: -10px;
+            font-variant: small-caps;
         }
-        .subtitle { font-size: 18px; color: #888; letter-spacing: 5px; text-transform: uppercase; }
+        .small-caps {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            font-variant: small-caps;
+        }
         .stats-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; width: 80%; max-width: 500px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 50px 0;
         }
         .stat-card {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid #00f5ff33;
-            padding: 20px; border-radius: 15px; text-align: center;
-            backdrop-filter: blur(10px); transition: 0.3s;
+            background: rgba(0, 30, 40, 0.5);
+            border: 2px solid #0ff3;
+            border-radius: 30px;
+            padding: 35px 25px;
+            min-width: 220px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 40px #00ffff33;
+            transition: all 0.3s;
         }
-        .stat-card:hover { border-color: #00f5ff; box-shadow: 0 0 20px #00f5ff33; }
-        .stat-card h2 { font-family: 'Orbitron'; font-size: 24px; }
-        .stat-card p { font-size: 14px; color: #aaa; text-transform: uppercase; }
-        .footer { position: absolute; bottom: 30px; font-size: 14px; opacity: 0.6; }
-        .footer b { color: #fff; text-shadow: 0 0 10px #fff; }
+        .stat-card:hover {
+            border-color: cyan;
+            box-shadow: 0 0 60px cyan;
+            transform: translateY(-5px);
+        }
+        .stat-card .value {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 30px cyan;
+            line-height: 1;
+            font-family: 'Orbitron', monospace;
+        }
+        .stat-card .label {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #88ddff;
+            text-transform: lowercase;
+            font-variant: small-caps;
+        }
+        .footer {
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: #446688;
+        }
+        .footer b {
+            color: #88ddff;
+            font-weight: 900;
+            text-transform: lowercase;
+            font-variant: small-caps;
+            font-size: 1.2rem;
+        }
+        .unicap {
+            font-family: 'Orbitron', 'Arial Unicode MS', sans-serif;
+        }
+        /* small-caps unicode style for special texts */
+        .unicap-text {
+            text-transform: lowercase;
+            font-variant: small-caps;
+        }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
+    <div class="glow"></div>
     <div class="container">
-        <div class="profile-box">
-            <div class="profile-img">A</div>
+        <div class="header">
+            <h1>ᴀɴᴏɴʏᴍᴏᴜs</h1>
+            <p class="small-caps">ɪᴠᴀsᴍs ɢᴀᴛᴇᴡᴀʏ</p>
         </div>
-        <h1>ANONYMOUS</h1>
-        <p class="subtitle">SYSTEM INTERFACE | ALPHA</p>
 
         <div class="stats-grid">
             <div class="stat-card">
-                <h2 id="nodes">000</h2>
-                <p>Nodes Online</p>
+                <div class="value" id="nodes">000</div>
+                <div class="label">ɴᴏᴅᴇs ᴏɴʟɪɴᴇ</div>
             </div>
             <div class="stat-card">
-                <h2 id="logs">000</h2>
-                <p>Logs Captured</p>
+                <div class="value" id="logs">000</div>
+                <div class="label">ʟᴏɢs ᴄᴀᴘᴛᴜʀᴇᴅ</div>
             </div>
         </div>
 
         <div class="footer">
-            POWERED BY <b>ANONYMOUS</b>
+            ᴘᴏᴡᴇʀᴇᴅ ʙʏ <b>ᴀɴᴏɴʏᴍᴏᴜs</b>
         </div>
     </div>
 
     <script>
-        function updateStats() {
-            fetch('/api/stats').then(res => res.json()).then(data => {
+        async function updateStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
                 document.getElementById('nodes').innerText = data.nodes.toString().padStart(3, '0');
                 document.getElementById('logs').innerText = data.logs.toString().padStart(3, '0');
-            });
+            } catch (e) {
+                console.error('Stats fetch error', e);
+            }
         }
         setInterval(updateStats, 5000);
         updateStats();
